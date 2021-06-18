@@ -11,6 +11,9 @@
 
 This is project of quiz in which we have backend and for front end we develop mobile app.
 
+# Steps To Run Project
+
+-   Clone Project https://github.com/awansaif/quiz-app.git
 -   Run command composer update
 -   php artisan migrate
 -   php artisan db:seed
