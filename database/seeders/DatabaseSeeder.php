@@ -17,3 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
     }
 }
+
+
+// quizzfzm_quiz_app
+// quizzfzm_awan
+//YMs9e6xYJ@umKq@
