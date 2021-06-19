@@ -10,6 +10,7 @@
                 <th scope="col" class="sort" data-sort="email">Email</th>
                 <th scope="col" class="sort" data-sort="name">Name</th>
                 <th scope="col" class="sort" data-sort="dob">DoB</th>
+                <th scope="col" class="sort" data-sort="city">City</th>
                 <th scope="col" class="sort" data-sort="status">Status</th>
                 {{-- <th scope="col"></th> --}}
                 <th scope="col" class="sort" data-sort="completion">Register at</th>
@@ -32,6 +33,7 @@
                 </td>
                 <td class="name">{{ $user->name }}</td>
                 <td class="dob">{{ date('d, M Y', strtotime($user->dob)) }}</td>
+                <td class="city">{{ $user->city }}</td>
                 <td>
                     @if($user->is_active)
                     <span class="badge badge-dot mr-4">

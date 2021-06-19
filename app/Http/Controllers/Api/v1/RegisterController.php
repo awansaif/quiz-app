@@ -21,7 +21,8 @@ class RegisterController extends Controller
             'surname' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'dob' => 'required|before:' . $before
+            'dob' => 'required|before:' . $before,
+            'city' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -38,6 +39,7 @@ class RegisterController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'dob' => $request->dob,
+                'city' => $request->city,
                 'avatar'  => 'https://ui-avatars.com/api/?background=f1f1f1&color=303030&name=' . $request->name,
             ]);
 
