@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\ChangePasswordController;
 use App\Http\Controllers\Api\v1\LoginController;
 use App\Http\Controllers\Api\v1\RegisterController;
 use App\Http\Controllers\Api\v1\UserController;
@@ -16,5 +17,8 @@ Route::post('login', [LoginController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('changepassword', [ChangePasswordController::class, 'changePassword']);
+
     Route::get('logout', [UserController::class, 'logout']);
 });
