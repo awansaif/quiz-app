@@ -10,6 +10,11 @@ Route::get('/', function () {
     return redirect()->route('admin.showLoginForm');
 });
 
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+
 
 Route::prefix('admin')
     ->name('admin.')

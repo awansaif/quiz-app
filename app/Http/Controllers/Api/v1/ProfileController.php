@@ -20,7 +20,7 @@ class ProfileController extends Controller
     }
 
 
-    public function updateprofile(Request $request)
+    public function updateProfilePicture(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'avatar' => 'required|image',
@@ -41,6 +41,42 @@ class ProfileController extends Controller
                 'succes' => 200,
                 'status' => true,
                 'message' => 'Profile image updated successfully'
+            ]);
+        }
+    }
+
+
+    public function updateProfile(Request $request)
+    {
+        $dt = new \Carbon\Carbon();
+        $before = $dt->subYears(18)->format('Y-m-d');
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'surname' => 'required',
+            'email' => 'required|email|unique:users,email,' . $request->user()->id,
+            'dob' => 'required|before:' . $before,
+            'city' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'succes' => 200,
+                'status' => false,
+                'errors' => $validator->errors()->all()
+            ]);
+        } else {
+            $user = User::find($request->user()->id);
+            $user->update([
+                'name' => $request->name,
+                'surname' => $request->surname,
+                'email' => $request->email,
+                'dob' => $request->dob,
+                'city' => $request->city,
+            ]);
+            return response()->json([
+                'succes' => 200,
+                'status' => true,
+                'message' => 'Profile updated successfully'
             ]);
         }
     }

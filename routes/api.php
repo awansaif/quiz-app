@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\ChangePasswordController;
+use App\Http\Controllers\Api\v1\ForgetPasswordController;
 use App\Http\Controllers\Api\v1\LoginController;
 use App\Http\Controllers\Api\v1\ProfileController;
 use App\Http\Controllers\Api\v1\RegisterController;
@@ -20,8 +21,10 @@ Route::post('login', [LoginController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('profile', [ProfileController::class, 'profile']);
-    Route::post('changeprofilepicture', [ProfileController::class, 'updateprofile']);
+    Route::post('changeprofilepicture', [ProfileController::class, 'updateProfilePicture']);
+    Route::post('updateprofile', [ProfileController::class, 'updateProfile']);
     Route::post('changepassword', [ChangePasswordController::class, 'changePassword']);
+    Route::post('forgetpassword', [ForgetPasswordController::class, 'sendResetMail']);
 
     Route::get('logout', [UserController::class, 'logout']);
 });
