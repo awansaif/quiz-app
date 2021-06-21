@@ -32,9 +32,10 @@ class LoginController extends Controller
                 $token = $request->user()->createToken(env('APP_NAME'));
 
                 return response()->json([
-                    'succes' => 200,
-                    'status' => true,
-                    'token' => $token->plainTextToken,
+                    'succes'  => 200,
+                    'status'  => true,
+                    'token'   => $token->plainTextToken,
+                    'avatar'  => $request->user()->avatar,
                     'message' => 'Account Login successfully'
                 ]);
             }
