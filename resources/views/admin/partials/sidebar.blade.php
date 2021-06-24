@@ -26,6 +26,13 @@
                             <span class="nav-link-text">Users</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::currentRouteName() == 'admin.quizzes.index'  ? 'active' : '' }}"
+                            href="{{ Route('admin.quizzes.index') }}">
+                            <i class="ni ni-planet text-orange"></i>
+                            <span class="nav-link-text">Quizzes</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

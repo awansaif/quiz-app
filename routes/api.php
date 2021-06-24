@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\ChangePasswordController;
 use App\Http\Controllers\Api\v1\ForgetPasswordController;
 use App\Http\Controllers\Api\v1\LoginController;
 use App\Http\Controllers\Api\v1\ProfileController;
+use App\Http\Controllers\Api\v1\QuizController;
 use App\Http\Controllers\Api\v1\RegisterController;
 use App\Http\Controllers\Api\v1\UserController;
 use Illuminate\Http\Request;
@@ -25,6 +26,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('updateprofile', [ProfileController::class, 'updateProfile']);
     Route::post('changepassword', [ChangePasswordController::class, 'changePassword']);
     Route::post('forgetpassword', [ForgetPasswordController::class, 'sendResetMail']);
+    Route::get('firstscreen', [QuizController::class, 'firstScreen']);
+    Route::get('secondscreen/{id}', [QuizController::class, 'secondScreen']);
 
     Route::get('logout', [UserController::class, 'logout']);
 });
