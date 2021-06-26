@@ -44,8 +44,8 @@ Quizzes
                                 <div class="form-group">
                                     <label for="date">Date:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
-                                        <input class="form-control" value="{{ old('date') }}" placeholder="Date"
-                                            type="date" name="date" min="{{ date('Y-m-d') }}">
+                                        <input class="form-control" value="{{ old('date_time') }}" placeholder="Date"
+                                            type="datetime-local" name="date_time" min="{{ date('Y-m-d H:m ') }}">
                                     </div>
                                     @error('date')
                                     <p class="text-danger">{{ $message }}</p>
@@ -55,18 +55,6 @@ Quizzes
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group mb-3">
-                                    <label for="time">Time:</label>
-                                    <div class="input-group input-group-merge input-group-alternative">
-                                        <input class="form-control" value="{{ old('time') }}" placeholder="Time"
-                                            type="time" name="time">
-                                    </div>
-                                    @error('time')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="prize">Prize:</label>
@@ -79,9 +67,7 @@ Quizzes
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label for="time">Video:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -93,12 +79,14 @@ Quizzes
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="prize">Text:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
-                                        <textarea class="form-control" value="{{ old('text') }}" placeholder="Text"
-                                            name="text"></textarea>
+                                        <textarea class="form-control" placeholder="Text"
+                                            name="text">{{ old('text') }}</textarea>
                                     </div>
                                     @error('text')
                                     <p class="text-danger">{{ $message }}</p>

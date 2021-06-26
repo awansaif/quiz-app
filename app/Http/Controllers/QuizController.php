@@ -25,16 +25,14 @@ class QuizController extends Controller
     {
         $request->validate([
             'title' => 'required|unique:quizzes,title',
-            'date' => 'required',
-            'time' => 'required',
+            'date_time' => 'required',
             'prize' => 'required',
             'video' => 'required',
             'text' => 'required|max:255'
         ]);
         Quiz::create([
             'title' => $request->title,
-            'date'  => $request->date,
-            'time'  => $request->time,
+            'date_time'  => date('d-m-Y h:m:s', strtotime($request->date_time)),
             'prize' => $request->prize,
             'video' =>  $this->uploadVideo('videos/', $request->video),
             'text'  => $request->text,
@@ -53,15 +51,12 @@ class QuizController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Quiz  $quiz
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Quiz $quiz)
+
+    public function edit(Quiz $quiz): View
     {
-        //
+        return view('admin.pages.quiz.edit', [
+            'quiz' => $quiz
+        ]);
     }
 
     /**
@@ -73,7 +68,21 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:quizzes,title',
+            'date_time' => 'required',
+            'prize' => 'required',
+            'video' => 'nullable',
+            'text' => 'required|max:255'
+        ]);
+        $quiz->update([
+            'title' => $request->title,
+            'date_time'  => date('d-m-Y h:m:s', strtotime($request->date_time)),
+            'prize' => $request->prize,
+            'video' =>  $request->file('video') ? $this->uploadVideo('videos/', $request->video) : $quiz->video,
+            'text'  => $request->text,
+        ]);
+        return back()->with('message', 'Quiz updated successfully');
     }
 
     /**

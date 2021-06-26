@@ -9,8 +9,7 @@
         <thead class="thead-light">
             <tr>
                 <th scope="col" class="sort" data-sort="title">Title</th>
-                <th scope="col" class="sort" data-sort="date">Date</th>
-                <th scope="col" class="sort" data-sort="time">Time</th>
+                <th scope="col" class="sort" data-sort="date">Date Time</th>
                 <th scope="col" class="sort" data-sort="prize">Prize</th>
                 <th scope="col" class="sort" data-sort="text">Text</th>
                 <th scope="col" class="sort" data-sort="video">Video</th>
@@ -25,8 +24,7 @@
                         <span class="name mb-0 text-sm">{{ $quiz->title }}</span>
                     </div>
                 </td>
-                <td class="name">{{ $quiz->date }}</td>
-                <td class="dob">{{ $quiz->time }}</td>
+                <td class="name">{{ $quiz->date_time }}</td>
                 <td class="city">{{ $quiz->prize }}</td>
                 <td>
                     {{ $quiz->text }}
@@ -42,7 +40,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <a class="dropdown-item" href="#">Questions</a>
-                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="{{ Route('admin.quizzes.edit', $quiz->id)  }}">Edit</a>
                             <button wire:click="remove({{ $quiz->id }})" class="dropdown-item">Remove</a>
                         </div>
                     </div>

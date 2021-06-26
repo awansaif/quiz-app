@@ -27,13 +27,14 @@ Quizzes
                     <x-alert-message />
                     <form method="POST" action="{{Route('admin.quizzes.update', $quiz->id) }}"
                         enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label for="">Title:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
-                                        <input class="form-control" value="{{ old('title') }}" placeholder="Title"
+                                        <input class="form-control" value="{{ $quiz->title }}" placeholder="Title"
                                             type="text" name="title">
                                     </div>
                                     @error('title')
@@ -45,8 +46,10 @@ Quizzes
                                 <div class="form-group">
                                     <label for="date">Date:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
-                                        <input class="form-control" value="{{ old('date') }}" placeholder="Date"
-                                            type="date" name="date" min="{{ date('Y-m-d') }}">
+                                        <input class="form-control"
+                                            value="{{ date('m/d/y h:m', strtotime($quiz->date_time)) }}"
+                                            placeholder="Date" type="datetime-local" name="date_time"
+                                            min="{{ date('Y-m-d') }}">
                                     </div>
                                     @error('date')
                                     <p class="text-danger">{{ $message }}</p>
@@ -57,22 +60,10 @@ Quizzes
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group mb-3">
-                                    <label for="time">Time:</label>
-                                    <div class="input-group input-group-merge input-group-alternative">
-                                        <input class="form-control" value="{{ old('time') }}" placeholder="Time"
-                                            type="time" name="time">
-                                    </div>
-                                    @error('time')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="prize">Prize:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
-                                        <input class="form-control" value="{{ old('prize') }}" placeholder="Prize"
+                                        <input class="form-control" value="{{ $quiz->prize }}" placeholder="Prize"
                                             type="number" name="prize">
                                     </div>
                                     @error('prize')
@@ -80,9 +71,7 @@ Quizzes
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label for="time">Video:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -94,12 +83,14 @@ Quizzes
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="prize">Text:</label>
                                     <div class="input-group input-group-merge input-group-alternative">
-                                        <textarea class="form-control" value="{{ old('text') }}" placeholder="Text"
-                                            name="text"></textarea>
+                                        <textarea class="form-control" placeholder="Text"
+                                            name="text"> {{ $quiz->text }} </textarea>
                                     </div>
                                     @error('text')
                                     <p class="text-danger">{{ $message }}</p>
@@ -109,7 +100,7 @@ Quizzes
                         </div>
 
                         <div class="text-left">
-                            <button type="submit" class="btn btn-primary my-4">Add Quiz</button>
+                            <button type="submit" class="btn btn-primary my-4">Update Quiz</button>
                         </div>
                     </form>
                 </div>

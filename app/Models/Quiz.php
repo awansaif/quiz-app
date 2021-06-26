@@ -12,11 +12,9 @@ class Quiz extends Model
 
     protected $fillable = [
         'title',
-        'date',
-        'time',
+        'date_time',
         'prize',
         'text',
         'video',
-
     ];
 }
