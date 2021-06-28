@@ -11,7 +11,7 @@ class QuizController extends Controller
     public function firstScreen()
     {
         $quiz = Quiz::whereDate('created_at', '>=', now())
-            ->select('id', 'date', 'time', 'prize')
+            ->select('id', 'date_time', 'prize')
             ->first();
         return response()->json([
             'status'  => 200,
@@ -22,7 +22,7 @@ class QuizController extends Controller
 
     public function secondScreen($id)
     {
-        $quiz = Quiz::where('id', $id)->select('id', 'date', 'time', 'prize', 'text')->first();
+        $quiz = Quiz::where('id', $id)->select('id', 'date_time', 'prize', 'text')->first();
         return response()->json([
             'status'  => 200,
             'success' => true,
