@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Quiz;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 
 class QuizController extends Controller
 {
@@ -37,7 +38,9 @@ class QuizController extends Controller
             'video' =>  $this->uploadVideo('videos/', $request->video),
             'text'  => $request->text,
         ]);
-        return back()->with('message', 'Quiz added successfully');
+        return redirect()
+            ->route('admin.questions.index')
+            ->with('message', 'Quiz added successfully');
     }
 
     /**

@@ -39,7 +39,8 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Questions</a>
+                            <a class="dropdown-item"
+                                href="{{ Route('admin.questions.index','quiz_id='.$quiz->id)  }}">Questions</a>
                             <a class="dropdown-item" href="{{ Route('admin.quizzes.edit', $quiz->id)  }}">Edit</a>
                             <button wire:click="remove({{ $quiz->id }})" class="dropdown-item">Remove</a>
                         </div>

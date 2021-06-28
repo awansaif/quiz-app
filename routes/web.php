@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Admin\Auth\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\QuizController as AdminQuizController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,7 +59,8 @@ Route::prefix('admin')
             Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
             Route::resource('users', UserController::class);
-            Route::resource('quizzes', QuizController::class);
+            Route::resource('quizzes', AdminQuizController::class);
+            Route::resource('questions', QuestionController::class);
 
             Route::resource('profile', ProfileController::class);
             Route::get('/logout', [AdminController::class, 'logout'])->name('logout');

@@ -28,6 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('forgetpassword', [ForgetPasswordController::class, 'sendResetMail']);
     Route::get('firstscreen', [QuizController::class, 'firstScreen']);
     Route::get('secondscreen/{id}', [QuizController::class, 'secondScreen']);
+    Route::get('thirdscreen/{id}', [QuizController::class, 'thirdScreen']);
+    Route::get('question/{id}', [QuizController::class, 'question']);
 
     Route::get('logout', [UserController::class, 'logout']);
 });

@@ -34,17 +34,18 @@ class ProfileController extends Controller
             ]);
         } else {
             $user = User::find($request->user()->id);
+            $avatar =  $this->uploadImage('images/', $request->file('avatar'));
             $user->update([
-                'avatar' => $this->uploadImage('images/', $request->file('avatar'))
+                'avatar' => $avatar
             ]);
             return response()->json([
                 'succes' => 200,
                 'status' => true,
+                'avatar' => $avatar,
                 'message' => 'Profile image updated successfully'
             ]);
         }
     }
-
 
     public function updateProfile(Request $request)
     {
