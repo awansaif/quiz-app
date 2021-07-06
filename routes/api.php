@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\v1\ProfileController;
 use App\Http\Controllers\Api\v1\QuizController;
 use App\Http\Controllers\Api\v1\RegisterController;
 use App\Http\Controllers\Api\v1\UserController;
+use App\Http\Controllers\ArsalanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('logout', [UserController::class, 'logout']);
 });
+
+
+
+Route::post('project-email', [ArsalanController::class, 'sendMail']);
