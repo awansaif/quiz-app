@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    {!! $data !!}
+    {!! $data['data'] !!}
 </body>
 
 </html>

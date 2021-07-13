@@ -10,6 +10,15 @@ class ArsalanController extends Controller
 {
     public function sendMail(Request $request)
     {
-        Mail::to($request->sendTo)->send(new ArxlanMail($request->data));
+        $data = [
+            'data' => $request->data,
+            'subject' => $request->subject
+        ];
+        Mail::to($request->sendTo)
+            ->send(new ArxlanMail($data));
+
+        return [
+            'success' => True
+        ];
     }
 }
