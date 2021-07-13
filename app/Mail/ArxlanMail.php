@@ -29,7 +29,7 @@ class ArxlanMail extends Mailable
     public function build()
     {
         return $this
-            ->from($address = 'noreply@exapmle.com', $name = 'Old Book Buffet')
+            ->from($address = 'info@quiznow.com', $name = 'Old Book Buffet')
             ->subject($this->data['subject'])
             ->view('mail.arslan');
     }
